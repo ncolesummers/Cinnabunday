@@ -1,7 +1,9 @@
-# Fresh project
+# Cinnabunday
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+This is a movie night web app for my partner and I. We can add movies to a
+shared list and then randomly select two to pick from.
+
+Built using Deno. No other dependencies necessary.
 
 ### Usage
 
