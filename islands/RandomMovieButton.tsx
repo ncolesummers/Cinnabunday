@@ -1,16 +1,32 @@
 import { JSX } from "preact";
+import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
+
 export default function RandomMovieButton(props: JSX.HTMLAttributes<HTMLButtonElement>) {
-      // get random movies from api/random
+
+  const [movies, setMovies] = useState([]);
+
+  // get random movies from api/random
   const getRandomMovies = async () => {
     console.log("getRandomMovies")
     const res = await fetch("/api/movies?random=true");
     const movies = await res.json();
-    console.log(movies);
+    setMovies(movies);
   };
+  
   return (
-    <div class="flex my-4 items-center justify-center">
+    <div class="flex flex-col my-4 items-center justify-center">
+      {movies.length > 0 && (
+        <div class="flex flex-col shadow bg-gray-50 p-4 my-4 items-center">
+          <h2 class="text-2xl font-bold">Tonight's Selection</h2>
+          <ul class="list-none">
+            {movies.map((movie) => (
+              <li class="mx-2 transform hover:scale-110 transition-transform my-2 rounded-md bg-gray-100" key={movie.id}>{movie.title}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <button
         onClick={getRandomMovies}
         {...props}

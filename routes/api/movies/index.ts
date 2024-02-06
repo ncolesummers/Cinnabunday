@@ -4,23 +4,31 @@ import { Handlers, FreshContext } from "$fresh/server.ts";
 const kv = await Deno.openKv();
 
 export const handler: Handlers<Movie | null> = {
-  async GET(_req, { params }: FreshContext) {
+  async GET(req, _ctx: FreshContext) {
     const movies = [];
     for await (const res of kv.list({ prefix: ["movies"] })) {
-      console.log(JSON.stringify(res));
       movies.push(res.value);
     }
-    console.log("params", params)
+    const params = new URL(req.url).searchParams;
+    
     // if random query param is present, return a random movie
-    // const random = params.get("random");
-    // if (random) {
-    //   const randomMovies = movies.length > 2
-    //     ? [movies[Math.floor(Math.random() * movies.length)], movies[Math.floor(Math.random() * movies.length)]]
-    //     : movies; // Return all if less than 2 movies
-    //   return new Response(JSON.stringify(randomMovies), {
-    //     headers: { "Content-Type": "application/json" },
-    //   });
-    // }
+    const random = params.get("random");
+    if (random && movies.length > 0) {
+      // Return 2 random movies. If there are less than 2 movies, return all. Don't return the same movie twice.
+      const randomMovies = [];
+      const randomIndex1 = Math.floor(Math.random() * movies.length);
+      randomMovies.push(movies[randomIndex1]);
+      movies.splice(randomIndex1, 1);
+      if (movies.length > 0) {
+        const randomIndex2 = Math.floor(Math.random() * movies.length);
+        randomMovies.push(movies[randomIndex2]);
+      }
+    
+      return new Response(JSON.stringify(randomMovies), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     return new Response(JSON.stringify(movies));
   },
 
