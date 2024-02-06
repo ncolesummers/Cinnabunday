@@ -5,7 +5,7 @@ import RandomMovieButton from "../islands/RandomMovieButton.tsx";
 export default function Home() {
 
   return (
-    <body class="bg-gradient-to-t from-gray-700 via-gray-900 to-black">
+    <body class="bg-gradient-to-t from-gray-400 via-gray-900">
       <div class="mt-10 px-5 rounded bg-white mx-auto flex max-w-screen-md flex-col justify-center py-12">
         <div class="mx-auto">
           <img
