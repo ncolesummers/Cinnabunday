@@ -18,11 +18,11 @@ export default function RandomMovieButton(props: JSX.HTMLAttributes<HTMLButtonEl
   return (
     <div class="flex flex-col my-4 items-center justify-center">
       {movies.length > 0 && (
-        <div class="flex flex-col shadow bg-gray-50 p-4 my-4 items-center">
+        <div class="flex flex-col shadow bg-gray-50 p-8 my-4 ">
           <h2 class="text-2xl font-bold">Tonight's Selection</h2>
           <ul class="list-none">
             {movies.map((movie) => (
-              <li class="mx-2 transform hover:scale-110 transition-transform my-2 rounded-md bg-gray-100" key={movie.id}>{movie.title}</li>
+              <li class="mx-2 p-1 w-full transform hover:scale-110 transition-transform my-2 rounded-md shadow" key={movie.id}>{movie.title}</li>
             ))}
           </ul>
         </div>
