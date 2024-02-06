@@ -23,7 +23,7 @@ export const handler: Handlers<Movie | null> = {
   async PUT(req, ctx) {
     const id = ctx.params.id;
     const movie = (await req.json()) as Movie;
-    const required: (keyof Movie)[] = ["title", "year", "seen", "id"];
+    const required: (keyof Movie)[] = ["title", "id"];
     for (const field of required) {
       if (movie[field] === undefined) {
         return new Response(

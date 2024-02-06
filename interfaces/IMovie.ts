@@ -1,4 +1,4 @@
-type Movie = {
+export interface IMovie {
   id: number;
   title: string;
-};
+}

@@ -1,14 +1,21 @@
-import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
+/// <reference lib="deno.unstable" />
+import Movies from "../islands/Movies.tsx";
+import RandomMovieButton from "../islands/RandomMovieButton.tsx";
 
 export default function Home() {
-  const count = useSignal({});
+
   return (
-    <div class="px-4 py-8 mx-auto bg-[#F2DB83]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold">Movie Night</h1>
-        <Counter count={count} />
+    <body class="bg-gradient-to-t from-gray-700 via-gray-900 to-black">
+      <div class="mt-10 px-5 rounded bg-white mx-auto flex max-w-screen-md flex-col justify-center py-12">
+        <div class="mx-auto">
+          <img
+            class="mr-20 align-middle w-60"
+            src="/logo.svg"
+          />
+        </div>
+        <RandomMovieButton class="mt-4 mx-auto" />
+        <Movies />
       </div>
-    </div>
+    </body>
   );
 }

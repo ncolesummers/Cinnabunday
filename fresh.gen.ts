@@ -8,7 +8,8 @@ import * as $api_movies_id_ from "./routes/api/movies/[id].ts";
 import * as $api_movies_index from "./routes/api/movies/index.ts";
 import * as $api_movies_types_d from "./routes/api/movies/types.d.ts";
 import * as $index from "./routes/index.tsx";
-import * as $Counter from "./islands/Counter.tsx";
+import * as $Movies from "./islands/Movies.tsx";
+import * as $RandomMovieButton from "./islands/RandomMovieButton.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -21,7 +22,8 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/Counter.tsx": $Counter,
+    "./islands/Movies.tsx": $Movies,
+    "./islands/RandomMovieButton.tsx": $RandomMovieButton,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

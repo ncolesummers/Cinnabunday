@@ -3,7 +3,7 @@
 This is a movie night web app for my partner and I. We can add movies to a
 shared list and then randomly select two to pick from.
 
-Built using Deno. No other dependencies necessary.
+Built using Deno and Fresh. No other dependencies necessary.
 
 ### Usage
 
