@@ -5,6 +5,8 @@ shared list and then randomly select two to pick from.
 
 Built using Deno and Fresh. No other dependencies necessary.
 
+This project is a labor of love and a way to learn Deno.
+
 ### Usage
 
 Make sure to install Deno: https://deno.land/manual/getting_started/installation
