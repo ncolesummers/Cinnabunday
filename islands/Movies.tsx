@@ -22,7 +22,8 @@ export default function Movies() {
     if (inputRef.current?.value) {
       // Check if the movie is already in the list. Use the title as the unique identifier.
       const movieExists = movies.some(
-        (movie) => movie.title === inputRef.current?.value,
+        (movie) =>
+          movie.title.toLowerCase() === inputRef.current?.value.toLowerCase(),
       );
       if (movieExists) {
         alert("This movie is already in the list.");
