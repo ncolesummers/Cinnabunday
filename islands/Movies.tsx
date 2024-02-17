@@ -20,6 +20,14 @@ export default function Movies() {
   const onNewMovie = (event: Event) => {
     event.preventDefault();
     if (inputRef.current?.value) {
+      // Check if the movie is already in the list. Use the title as the unique identifier.
+      const movieExists = movies.some(
+        (movie) => movie.title === inputRef.current?.value,
+      );
+      if (movieExists) {
+        alert("This movie is already in the list.");
+        return;
+      }
       const newMovie: IMovie = {
         id: crypto.randomUUID(),
         title: inputRef.current.value,
