@@ -91,13 +91,15 @@ export default function Movies() {
       {movies.length > 0
         ? (
           <div class="mt-10">
-            {movies.map((movie) => (
-              <Movie
-                movie={movie}
-                onMovieEdit={onEditMovie}
-                onMovieRemove={onRemoveMovie}
-              />
-            ))}
+            {movies
+              .sort((a, b) => (a.title > b.title ? 1 : -1))
+              .map((movie) => (
+                <Movie
+                  movie={movie}
+                  onMovieEdit={onEditMovie}
+                  onMovieRemove={onRemoveMovie}
+                />
+              ))}
           </div>
         )
         : (
