@@ -1,4 +1,4 @@
 export interface IMovie {
-  id: number;
+  id: number | string;
   title: string;
 }

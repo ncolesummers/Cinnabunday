@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { IMovie } from "../interfaces/IMovie.ts";
 import { Movie } from "../components/Movie.tsx";
 
@@ -21,7 +21,7 @@ export default function Movies() {
     event.preventDefault();
     if (inputRef.current?.value) {
       const newMovie: IMovie = {
-        id: counter,
+        id: crypto.randomUUID(),
         title: inputRef.current.value,
       };
       setMovies((prevState) => {
